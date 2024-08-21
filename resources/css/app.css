@@ -1,0 +1,103 @@
+/* Fonts */
+@import url(https://fonts.bunny.net/css?family=roboto:300,400,500,700);
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+        font-family: "Roboto", sans-serif;
+    }
+}
+
+@layer components {
+    /* loading */
+    #pre-loader {
+        @apply hidden;
+    }
+    .loader {
+        @apply fixed top-0 left-0 w-screen h-screen z-[1111] bg-white flex items-center justify-center;
+    }
+    .car {
+        .car__body {
+            animation: shake 0.2s ease-in-out infinite alternate;
+        }
+        .car__line {
+            transform-origin: center right;
+            stroke-dasharray: 22;
+            animation: line 0.8s ease-in-out infinite;
+            animation-fill-mode: both;
+
+            .car__line--top {
+                animation-delay: 0s;
+            }
+            .car__line--middle {
+                animation-delay: 0.2s;
+            }
+            .car__line--bottom {
+                animation-delay: 0.4s;
+            }
+        }
+    }
+    @keyframes shake {
+        0% {
+            transform: translateY(-1%);
+        }
+        100% {
+            transform: translateY(3%);
+        }
+    }
+    @keyframes line {
+        0% {
+            stroke-dashoffset: 22;
+        }
+        25% {
+            stroke-dashoffset: 22;
+        }
+        50% {
+            stroke-dashoffset: 0;
+        }
+        51% {
+            stroke-dashoffset: 0;
+        }
+        80% {
+            stroke-dashoffset: -22;
+        }
+        100% {
+            stroke-dashoffset: -22;
+        }
+    }
+    /* end loading */
+
+    /* swiper */
+    .swiper {
+        @apply w-full h-full;
+    }
+    .swiper-button-next,
+    .swiper-button-prev {
+        background-color: rgba(0, 0, 0, 0.3) !important;
+        border-radius: 50%;
+        width: 45px !important;
+        height: 45px !important;
+    }
+    .swiper-button-next:hover,
+    .swiper-button-prev:hover {
+        background-color: rgba(0, 0, 0, 0.7) !important;
+    }
+    .swiper-button-next::after,
+    .swiper-button-prev::after {
+        font-size: 20px !important;
+        color: #fff !important;
+    }
+    /* swiper */
+
+    .btn-banner-tabs div {
+        @apply w-fit relative;
+    }
+    .btn-banner-tabs:hover div::after,
+    .btn-banner-tabs.current div::after {
+        content: "";
+        @apply absolute top-1/2 left-0 w-full h-2.5 bg-red-600 z-[-1];
+    }
+}
